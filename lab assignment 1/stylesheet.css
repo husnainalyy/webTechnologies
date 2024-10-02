@@ -1,0 +1,317 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+   position: relative;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    /* background-color: #f0f0f0; */
+    overflow: hidden;
+}
+.navbar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; 
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.custom-small-text {
+  font-size: 14px; /* Custom small size */
+}
+.aTags{
+  display:flex ;
+  padding-right: 5%;
+  gap: 35px;
+}
+.anchrtags{
+  color: white;
+}
+.iconImgs{
+  padding-right: 10%;
+  
+}
+.mainPic{
+  
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.topNev{
+    background-color: #262525;
+    color: white;
+}
+.icon {
+    padding-left: 10px;
+    font-size: 13px;
+}
+.icon2 {
+  padding-left: 20px;
+  font-size: 13px;
+}
+.icon3 {
+  padding-left: 17%;
+  font-size: 13px;
+}
+.icon4 {
+  padding-left: 15%;
+}
+.hero-text{
+    position: absolute;
+    top: 50%;
+    color: #f9f9f9;
+    text-align: center;
+    font-family: sans-serif;
+}
+.cta-button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.cta-button:hover {
+  background-color: black;
+}
+.image1{
+  display: flex;
+}
+.scndSection{
+  margin-top: 20px;
+}
+.smallBox{
+  position: absolute;
+  left: 15%;
+  margin-top: 40%;
+  width: 20%;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.smallBox1{
+  position: absolute;
+  left: 60%;
+  margin-top: 30%;
+  width: 20%;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.smallBox2{
+  position: absolute;
+    top: 345%;
+    left: 20%;
+  width: 22%;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.smallBox3{
+  position: absolute;
+  top: 300%;
+  left: 60%;
+  width: 20%;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.text2{
+  text-align: center;
+  font-size: 12px;
+  margin-top: 5%;
+}
+.text3{
+  margin-top: 7%;
+}
+.gallery{
+  display: flex;
+  gap: 7px;
+}
+.price{
+  line-height: 7px;
+}
+.priceTag{
+  display: flex;
+  gap: 20%;
+  top: 20%;
+}
+.thirdSection{
+  display: flex;
+  gap: 17%;
+}
+.cta-button1{
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+      margin-left: 39%;
+      margin-top: 32px;
+}
+.cta-button1:hover {
+  background-color: black;
+}
+.text4{
+  width: 100%;
+  margin-top: 5%;
+  text-align: center;
+}
+.pictures{
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+.boxPic{
+  position: absolute;
+  top: 700%;
+  left: 60%;
+  width: 30%;
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.boxPic2{
+  position: absolute;
+  top: 710%;
+  left: 10%;
+  width: 30%;
+  background-color: white;
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.pictures1{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+.price1{
+  padding-left: 20px;
+  text-align: center;
+}
+.price2{
+  padding-right: 7%;
+  text-align: center;
+}
+.price3{
+  padding-right: 10%;
+  text-align: center;
+}
+.upperFooter{
+  background-color: black;
+  padding: 3%;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+
+}
+.para{
+  color: #eee;
+  line-height: 14px;
+}
+.flex{
+  display: flex;
+}
+.finalFooter{
+  background-color: #B5AF9C;
+  width: 100%;
+  padding-bottom: 5%;
+  display: flex;
+  
+}
+.icons{
+  display: flex;
+  gap: 10px;
+  
+}
+.information{
+  width: 25%;
+  padding-left: 12px;
+
+}
+.products{
+  width: 10%;
+  line-height: 200%;
+  padding-right: 10%;
+  
+}
+.shops{
+  width: 10%;
+  line-height: 200%;
+  padding-right: 10%;
+}
+.deadlines{
+  width: 20%;
+  line-height: 200%;
+  padding-right: 10%;
+  
+}
+.SUBSCRIBE{
+  width: 25%;
+  
+}
+a{
+  color: black;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration-line: underline;
+}
+input{
+  padding: 5%;
+  border: none;
+  border-radius: 2px;
+}
+.subButton{
+  background-color: black;
+  color: white;
+  padding: 5%;
+  border: none;
+  margin-top: 3%;
+  font-size: 12px;
+}
+.last{
+  display: flex;
+  justify-content: space-between;
+  /* padding: 7px; */
+}
+
+.custom-card {
+  position: relative;
+}
+.custom-card .card-body {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  padding: 20px;
+  max-width: 75%;
+}
+.custom-card .btn {
+  margin-top: 10px;
+}
+
+
+
