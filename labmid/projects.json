@@ -1,0 +1,50 @@
+{
+    "projects": [
+        {
+            "name": "Time Treasure",
+            "description": "Time Treasure is designed to give your memories a special place and moment.",
+            "image": "./projects/time.png",
+            "link": "https://time-treasure.vercel.app/",
+            "details": {
+                "introduction": "This application allows users to create a digital time capsule...",
+                "techStack": "Next.js, React, Tailwind CSS, Node.js, MongoDB, NextAuth, Zod, Resend.",
+                "features": [
+                    "Memory Management",
+                    "Scheduled Notifications",
+                    "User-Friendly Interface"
+                ]
+            }
+        },
+        {
+            "name": "Cipher Vault",
+            "description": "Cipher Vault is an anonymous feedback platform that allows users to send and receive messages securely.",
+            "image": "./projects/cipher.png",
+            "link": "https://cipher-vault-863rf51jk-husnain-alis-projects-dbd16c4d.vercel.app/",
+            "details": {
+                "introduction": "Cipher Vault provides a secure platform for anonymous communication...",
+                "techStack": "Next.js, React, Tailwind CSS, MongoDB, Node.js, NextAuth, Zod, bcrypt.",
+                "features": [
+                    "Anonymous Feedback",
+                    "Customizable Message Acceptance",
+                    "AI Integration"
+                ]
+            }
+        },
+        {
+            "name": "Cui Connect",
+            "description": "Cui Connect helps campus students find events and register.",
+            "image": "./projects/cui.png",
+            "link": "https://cui-connect.vercel.app/",
+            "details": {
+                "introduction": "Find out what's happening around campus...",
+                "techStack": "Next.js, React, Tailwind CSS.",
+                "features": [
+                    "Event Registration",
+                    "User Engagement",
+                    "Campus Connectivity"
+                ]
+            }
+        }
+        
+    ]
+}
