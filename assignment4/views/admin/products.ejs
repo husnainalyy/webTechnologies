@@ -1,0 +1,200 @@
+<div>
+    <br>
+    <h3 class="mt-5 mb-4 text-center display-5 fw-bold text-uppercase">
+        <%= pageTitle %>
+    </h3>
+    <!-- Buttons to Create New Product or Brand -->
+    <div class="d-flex justify-content-between mb-4 align-items-center">
+        <div>
+            <a href="/admin/products/create" class="btn btn-info me-2">
+                <i class="bi bi-plus-circle"></i> Create New Product
+            </a>
+            <a href="/admin/categories/create" class="btn btn-warning me-2">
+                <i class="bi bi-plus-circle"></i> Create New Category
+            </a>
+            <a href="/admin/categories" class="btn btn-warning me-2">
+                <i class="bi bi-plus-circle"></i> All Category
+            </a>
+            <a href="/admin/brands/create" class="btn btn-success me-2">
+                <i class="bi bi-building"></i> Create New Brand
+            </a>
+            <a href="/admin/brands" class="btn btn-success me-2">
+                <i class="bi bi-building"></i> All Brand
+            </a>
+            <a href="/admin/orders" class="btn btn-success me-2">
+                <i class="bi bi-building"></i> Orders
+            </a>
+        </div>
+    </div>
+    <!-- Sorting, Filtering, and Searching Section -->
+    <div class="d-flex justify-content-between mb-4 align-items-center">
+        <form action="/admin" method="GET" class="d-flex">
+            <!-- Category Filter -->
+            <select name="category" class="form-select me-2" style="max-width: 200px; height: 35px; font-size: 14px;">
+                <option value="">Filter by Category</option>
+                <% categories.forEach(category=> { %>
+                    <option value="<%= category._id %>" <%=category._id==selectedCategory ? 'selected' : '' %>>
+                        <%= category.name %>
+                    </option>
+                    <% }) %>
+            </select>
+
+            <!-- Brand Filter -->
+            <select name="brand" class="form-select me-2" style="max-width: 200px; height: 35px; font-size: 14px;">
+                <option value="">Filter by Brand</option>
+                <% brands.forEach(brand=> { %>
+                    <option value="<%= brand._id %>" <%=brand._id==selectedBrand ? 'selected' : '' %>>
+                        <%= brand.name %>
+                    </option>
+                    <% }) %>
+            </select>
+
+            <!-- Sorting Options -->
+            <select name="sortBy" class="form-select me-2" style="max-width: 200px; height: 35px; font-size: 14px;">
+                <option value="">Sort By</option>
+                <option value="name" <%=sortBy==='name' ? 'selected' : '' %>>Name</option>
+                <option value="price" <%=sortBy==='price' ? 'selected' : '' %>>Price</option>
+                <option value="stock" <%=sortBy==='stock' ? 'selected' : '' %>>Stock</option>
+            </select>
+
+            <!-- Sort Direction -->
+            <select name="sortOrder" class="form-select" style="max-width: 150px; height: 35px; font-size: 14px;">
+                <option value="asc" <%=sortOrder==='asc' ? 'selected' : '' %>>Ascending</option>
+                <option value="desc" <%=sortOrder==='desc' ? 'selected' : '' %>>Descending</option>
+            </select>
+
+            <!-- Search Field -->
+            <input type="text" name="search" value="<%= search %>" class="form-control"
+                style="max-width: 500px; height: 35px; font-size: 14px; margin-left: 10px;" placeholder="Search by Name">
+
+            <button type="submit" class="btn btn-primary ms-2" style="display: flex; justify-content: center; align-items: center; height: 35px; font-size: 14px;">
+                Apply
+            </button>
+        </form>
+    </div>
+
+    <!-- Product Table -->
+    <div class="table-responsive shadow rounded">
+        <table class="table table-hover align-middle text-center table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Stock</th>
+                    <th>Images</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach((product, index)=> { %>
+                    <tr>
+                        <td>
+                            <span class="badge bg-secondary">
+                                <%= index + 1 %>
+                            </span>
+                        </td>
+                        <td class="text-wrap">
+                            <strong>
+                                <%= product.name %>
+                            </strong>
+                        </td>
+                        <td>
+                            <span class="badge bg-info">
+                                <%= product.category.name %>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge bg-success">
+                                <%= product.brand.name %>
+                            </span>
+                        </td>
+                        <td>
+                            $<span class="fw-bold text-success">
+                                <%= product.price %>
+                            </span>
+                        </td>
+                        <td class="text-wrap">
+                            <%= product.description.substring(0, 50) %>...
+                        </td>
+                        <td>
+                            <span class="badge bg-warning">
+                                <%= product.stock %>
+                            </span>
+                        </td>
+                        <td>
+                            <img src="<%= product.images[0] %>" alt="Product Image"
+                                class="product-img-icon rounded shadow-sm" data-bs-toggle="modal"
+                                data-bs-target="#productImageModal" data-img-src="<%= product.images[0] %>"
+                                style="width: 50px; height: 50px; object-fit: cover;">
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a href="/admin/products/edit/<%= product._id %>" class="btn btn-warning btn-sm me-2">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a href="/admin/products/delete/<%= product._id %>" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for Image View -->
+    <div class="modal fade" id="productImageModal" tabindex="-1" aria-labelledby="productImageModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productImageModalLabel">Product Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" class="img-fluid" alt="Product Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+                    <a class="page-link"
+                        href="?page=<%= currentPage - 1 %>&search=<%= search %>&category=<%= selectedCategory %>&brand=<%= selectedBrand %>&sortBy=<%= sortBy %>&sortOrder=<%= sortOrder %>">Previous</a>
+                </li>
+                <% for (let i=1; i <=totalPages; i++) { %>
+                    <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                        <a class="page-link"
+                            href="?page=<%= i %>&search=<%= search %>&category=<%= selectedCategory %>&brand=<%= selectedBrand %>&sortBy=<%= sortBy %>&sortOrder=<%= sortOrder %>">
+                            <%= i %>
+                        </a>
+                    </li>
+                    <% } %>
+                        <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+                            <a class="page-link"
+                                href="?page=<%= currentPage + 1 %>&search=<%= search %>&category=<%= selectedCategory %>&brand=<%= selectedBrand %>&sortBy=<%= sortBy %>&sortOrder=<%= sortOrder %>">Next</a>
+                        </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script>
+    // Modal Image Click
+    const modalImage = document.getElementById('modalImage');
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(item => {
+        item.addEventListener('click', (e) => {
+            const imageUrl = e.target.getAttribute('data-img-src');
+            modalImage.src = imageUrl;
+        });
+    });
+</script>

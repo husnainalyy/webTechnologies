@@ -1,0 +1,43 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary">Create Brand</h2>
+    <form method="post" action="/admin/brands/create" enctype="multipart/form-data">
+
+        <!-- Brand Title -->
+        <div class="form-group mb-6">
+            <label for="name" class="text-primary-text font-semibold text-lg">
+                Brand Title
+            </label>
+            <input type="text"
+                class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                id="brandName" name="name" placeholder="Enter Brand Title" required>
+        </div>
+
+        <!-- Brand Logo -->
+        <div class="form-group mb-6">
+            <label for="brandLogo" class="text-primary-text font-semibold text-lg">
+                Brand Logo
+            </label>
+            <input type="file"
+                class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                id="brandLogo" accept="image/*" name="brandImage" required>
+        </div>
+
+        <!-- Brand Website -->
+        <div class="form-group mb-6">
+            <label for="brandWebsite" class="text-primary-text font-semibold text-lg">
+                Brand Website (Optional)
+            </label>
+            <input type="url"
+                class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                id="brandWebsite" name="brandWebsite" placeholder="Enter Brand Website URL">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-flex justify-content-center">
+            <button type="submit"
+                class="btn btn-primary btn-lg px-5 py-3 rounded-full transition-all duration-200 ease-in-out transform hover:scale-105">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>

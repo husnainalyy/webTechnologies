@@ -1,0 +1,147 @@
+<div class="container py-10">
+    <h2 class="text-center text-primary-text font-bold text-3xl mb-8">Add Product Details</h2>
+    <form method="post" action="/admin/products/create" enctype="multipart/form-data"
+        class="bg-gradient-to-r from-indigo-600 to-pink-600 p-8 rounded-2xl shadow-xl">
+
+        <!-- Category and Brand Fields (Side by Side) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <!-- Category Dropdown -->
+            <div class="form-group">
+                <label for="category" class="text-primary-text font-semibold text-lg">Category</label>
+                <select
+                    class="form-control bg- border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                    id="category" name="category" required>
+                    <option value="">Select Category</option>
+                    <% categories.forEach(category=> { %>
+                        <option value="<%= category._id %>">
+                            <%= category.name %>
+                        </option>
+                        <% }) %>
+                </select>
+            </div>
+            <!-- Brand Dropdown -->
+            <div class="form-group">
+                <label for="brand" class="text-primary-text font-semibold text-lg">Brand</label>
+                <select
+                    class="form-control bg- border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                    id="brand" name="brand" required>
+                    <option value="">Select Brand</option>
+                    <% brands.forEach(brand=> { %>
+                        <option value="<%= brand._id %>">
+                            <%= brand.name %>
+                        </option>
+                        <% }) %>
+                </select>
+            </div>
+        </div>
+
+        <!-- Product Title and Description (Stacked) -->
+        <div class="grid grid-cols-1 gap-6 mb-8">
+            <!-- Title Input -->
+            <div class="form-group">
+                <label for="title" class="text-primary-text font-semibold text-lg">Product Title</label>
+                <input type="text"
+                    class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                    id="title" name="name" placeholder="Enter Product Title" required>
+            </div>
+
+            <!-- Description Input -->
+            <div class="form-group">
+                <label for="description" class="text-primary-text font-semibold text-lg">Description</label>
+                <textarea
+                    class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                    id="description" name="description" rows="4" placeholder="Enter product description"
+                    required></textarea>
+            </div>
+        </div>
+
+        <!-- Price and Stock (Side by Side) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <!-- Price Input -->
+            <div class="form-group">
+                <label for="price" class="text-primary-text font-semibold text-lg">Price</label>
+                <input type="number"
+                    class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                    id="price" name="price" placeholder="Enter Price" min="1" required>
+            </div>
+
+            <!-- Stock Input -->
+            <div class="form-group">
+                <label for="stock" class="text-primary-text font-semibold text-lg">Stock</label>
+                <input type="number"
+                    class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                    id="stock" name="stock" placeholder="Enter Stock Quantity" min="0" required>
+            </div>
+        </div>
+
+    <!-- Dimensions (Single Line) -->
+    <div class=" grid grid-cols-3 sm:grid-cols-3 gap-6 mb-8">
+        <!-- Width Input -->
+        <div class="form-group">
+            <label for="width" class="text-primary-text font-semibold text-lg">
+                <i class="fas fa-ruler mr-2"></i>Width
+            </label>
+            <input type="number"
+                class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                id="width" name="dimensions[width]" placeholder="Width" min="0" required>
+        </div>
+        <!-- Height Input -->
+        <div class="form-group">
+            <label for="height" class="text-primary-text font-semibold text-lg">
+                <i class="fas fa-ruler-vertical mr-2"></i>Height
+            </label>
+            <input type="number"
+                class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                id="height" name="dimensions[height]" placeholder="Height" min="0" required>
+        </div>
+        <!-- Depth Input -->
+        <div class="form-group">
+            <label for="depth" class="text-primary-text font-semibold text-lg">
+                <i class="fas fa-ruler-combined mr-2"></i>Depth
+            </label>
+            <input type="number"
+                class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                id="depth" name="dimensions[depth]" placeholder="Depth" min="0" required>
+        </div>
+    </div>
+
+
+
+        <!-- Materials and Colors (Side by Side) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <!-- Materials Input -->
+            <div class="form-group">
+                <label for="materials" class="text-primary-text font-semibold text-lg">Materials</label>
+                <input type="text"
+                    class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                    id="materials" name="materials" placeholder="Enter materials used" required>
+            </div>
+
+            <!-- Colors Input -->
+            <div class="form-group">
+                <label for="colors" class="text-primary-text font-semibold text-lg">Colors</label>
+                <input type="text"
+                    class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                    id="colors" name="colors" placeholder="Enter available colors" required>
+            </div>
+        </div>
+
+        <!-- Product Image Upload -->
+        <div class="form-group mb-8">
+            <label for="productImage" class="text-primary-text font-semibold text-lg">Product Image</label>
+            <input type="file"
+                class="form-control bg-transparent border-2 border-primary-text text-primary-text py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-color"
+                id="productImage" name="productImage" accept="image/*" multiple required>
+        </div>
+
+        <!-- Submit Button -->
+        <!-- Submit Button -->
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn-submit mt-4 w-full text-lg font-bold">
+                Submit Product
+            </button>
+        </div>
+
+    </form>
+</div>
+

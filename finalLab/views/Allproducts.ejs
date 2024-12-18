@@ -1,0 +1,71 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-4">All Products</h1>
+
+    <!-- Search, Sort, and Filter Form -->
+    <form action="/products" method="get" class="row g-3 mb-5">
+        <div class="col-md-4">
+            <input type="text" name="search" class="form-control" value="<%= search || '' %>"
+                placeholder="Search products...">
+        </div>
+        <div class="col-md-3">
+            <select name="category" class="form-select">
+                <option value="">All Categories</option>
+                <option value="6762712ecbd0cb1c92b24af7" <% if (category==='6762712ecbd0cb1c92b24af7' ) { %>selected<% }
+                        %>>
+                        Furniture
+                </option>
+                <option value="other-category-id">Other Category</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="sort" class="form-select">
+                <option value="">Default</option>
+                <option value="price_asc" <% if (sort==='price_asc' ) { %>selected<% } %>>Price: Low to High</option>
+                <option value="price_desc" <% if (sort==='price_desc' ) { %>selected<% } %>>Price: High to Low</option>
+                <option value="newest" <% if (sort==='newest' ) { %>selected<% } %>>Newest</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+        </div>
+    </form>
+
+    <!-- Products List -->
+    <div class="row">
+        <% products.forEach(product=> { %>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <img src="<%= product.images[0] %>" alt="<%= product.name %>" class="card-img-top"
+                        style="max-height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= product.name %>
+                        </h5>
+                        <p class="card-text text-muted">Price: $<%= product.price %>
+                        </p>
+                        <p class="card-text">
+                            <%= product.description %>
+                        </p>
+                        <p class="card-text"><small class="text-success">Stock: <%= product.stock %> items</small></p>
+                        <a href="/cart/add-to-cart/<%= product._id %>" class="btn btn-primary w-100 mt-2">Add to Cart</a>
+
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <% for (let i=1; i <=totalPages; i++) { %>
+                <li class="page-item <% if (currentPage === i) { %>active<% } %>">
+                    <a class="page-link"
+                        href="/products?page=<%= i %>&limit=10&search=<%= search || '' %>&category=<%= category || '' %>&sort=<%= sort || '' %>">
+                        <%= i %>
+                    </a>
+                </li>
+                <% } %>
+        </ul>
+    </nav>
+</div>

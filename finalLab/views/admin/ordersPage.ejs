@@ -1,0 +1,136 @@
+<div class="container my-4">
+    <h2 class="text-center mb-4">Order Management</h2>
+
+    <!-- Order Table -->
+    <div class="table-responsive">
+        <table class="table table-dark table-bordered">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th>Order Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Order Row -->
+                <tr id="orderRow-6762abe3e80295d75232a9ae">
+                    <td>6762abe3e80295d75232a9ae</td>
+                    <td>12599.00 PKR</td>
+                    <td><span class="badge bg-info" id="status-6762abe3e80295d75232a9ae">Shipped</span></td>
+                    <td>12/18/2024</td>
+                    <td>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <!-- View Button to Open Modal -->
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#orderModal"
+                                onclick="showProductDetails('Wayfair Dining Table Set', 'Ashley Furniture', 1, 12000, 'Ikea Ektorp Sofa', 'ikea', 1, 599)">
+                                VIEW
+                            </button>
+
+                            <!-- Update Status Dropdown -->
+                            <select class="form-select form-select-sm" style="width: auto;"
+                                onchange="updateStatus(this, '6762abe3e80295d75232a9ae')">
+                                <option value="Shipped" selected>Shipped</option>
+                                <option value="Delivered">Delivered</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="productDetails">
+                    <!-- Dynamic Content Will Fill Here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #121212;
+        color: #fff;
+        font-family: Arial, sans-serif;
+    }
+
+    .table-dark {
+        background-color: #1e1e1e;
+    }
+
+    .table thead th {
+        background-color: #333;
+    }
+
+    .badge {
+        font-size: 0.9rem;
+    }
+
+    .btn-sm {
+        font-size: 0.9rem;
+    }
+
+    .modal-body img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+</style>
+
+<!-- JavaScript -->
+<script>
+    // Function to populate modal with product details
+    function showProductDetails(p1Name, p1Brand, p1Qty, p1Price, p2Name, p2Brand, p2Qty, p2Price) {
+        const details = `
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Brand</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${p1Name}</td>
+                        <td>${p1Brand}</td>
+                        <td>${p1Qty}</td>
+                        <td>${p1Price} PKR</td>
+                    </tr>
+                    <tr>
+                        <td>${p2Name}</td>
+                        <td>${p2Brand}</td>
+                        <td>${p2Qty}</td>
+                        <td>${p2Price} PKR</td>
+                    </tr>
+                </tbody>
+            </table>
+          
+        `;
+        document.getElementById('productDetails').innerHTML = details;
+    }
+
+    // Function to handle status update
+    function updateStatus(selectElement, orderId) {
+        const status = selectElement.value;
+        const statusElement = document.getElementById(`status-${orderId}`);
+        statusElement.textContent = status;
+
+        alert(`Order status updated to: ${status}`);
+    }
+</script>

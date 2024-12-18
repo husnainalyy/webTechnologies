@@ -1,0 +1,43 @@
+<h1>
+    <%= pageTitle %>
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Logo</th>
+            <th>Website</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% brands.forEach(brand=> { %>
+            <tr>
+                <td>
+                    <%= brand.name %>
+                </td>
+                <td><img src="<%= brand.logo %>" alt="<%= brand.name %> Logo" width="50"></td>
+                <td>
+                    <% if (brand.website) { %>
+                        <a href="<%= brand.website %>" target="_blank">
+                            <%= brand.website %>
+                        </a>
+                        <% } else { %>
+                            N/A
+                            <% } %>
+                </td>
+                <td>
+                    <%= brand.createdAt.toLocaleDateString() %>
+                </td>
+                <td>
+                    <a href="/admin/brands/edit/<%= brand._id %>" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/admin/brands/delete/<%= brand._id %>" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Are you sure you want to delete this brand?')">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+    </tbody>
+</table>
+

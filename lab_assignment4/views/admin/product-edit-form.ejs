@@ -1,0 +1,45 @@
+<div class="p-5 mt-5">
+    <h2 class="text-center mt-4 mb-4">Edit Product Details</h2>
+    <form method="post" action="/admin/products/edit/<%= product._id %>">
+        <!-- Title Input -->
+        <div class="form-group">
+            <label for="title" class="font-weight-bold">Title</label>
+            <input type="text" class="form-control rounded-pill shadow-sm" id="title" name="title"
+                placeholder="Enter Title" value="<%= product.title %>">
+        </div>
+
+        <!-- Description Input -->
+        <div class="form-group">
+            <label for="description" class="font-weight-bold">Description</label>
+            <textarea class="form-control shadow-sm" id="description" name="description" rows="3"
+                placeholder="Enter Description"><%= product.description %></textarea>
+        </div>
+
+        <!-- Price Input -->
+        <div class="form-group">
+            <label for="price" class="font-weight-bold">Price</label>
+            <input type="number" class="form-control rounded-pill shadow-sm" id="price" name="price"
+                placeholder="Enter Price" value="<%= product.price %>">
+        </div>
+
+        <!-- Brand Dropdown -->
+        <div class="form-group">
+            <label for="brand" class="font-weight-bold">Brand</label>
+            <select class="form-control rounded-pill shadow-sm" id="brand" name="brand">
+                <% brands.forEach(function(brand) { %>
+                    <option value="<%= brand._id %>" <%=product.brand===brand._id ? 'selected' : '' %>
+                        >
+                        <%= brand.brandName%>
+                    </option>
+                    <% }); %>
+            </select>
+        </div>
+
+        <!-- Update Button -->
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-info px-5 rounded-pill shadow">
+                Update Product
+            </button>
+        </div>
+    </form>
+</div>

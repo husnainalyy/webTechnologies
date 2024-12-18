@@ -8,6 +8,7 @@ dotenv.config({ path: ".env.local" }); // Load environment variables
 // Initialize the Express server
 const server = express();
 
+
 // Load models and routes
 const Product = require("./models/products.model");
 const adminProductsRouter = require("./routes/admin/products.controller");
